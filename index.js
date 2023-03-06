@@ -45,6 +45,26 @@ client.on('message', async message => {
                 const replyMessage = `${name}, tu edad es: ${response.age} años`
                 message.reply(replyMessage);
                 break;
+            case '#clase':
+                switch (argument){
+                case "front":
+                    message.reply("https://digitalhouse.zoom.us/j/91393796736?pwd=VHdVK2ptV0o2YTh0RjFPdlk2WHRNdz09");
+                    break;
+                case "infra":
+                    message.reply("https://digitalhouse.zoom.us/j/93990279432?pwd=ZVduVVFXSlIvNnQzMWRpT2d4ejBCZz09");
+                    break;
+                }
+                break;
+            case '#mesa':
+                switch (argument) {
+                    case "front":
+                        message.reply("https://digitalhouse.zoom.us/j/92914685843?pwd=K25zcXlLYWhIeEFZc3R6aXNYZDFrZz09");
+                        break;  
+                    case "infra":
+                        message.reply("https://digitalhouse.zoom.us/j/92914685843?pwd=K25zcXlLYWhIeEFZc3R6aXNYZDFrZz09")
+                        break;
+                }
+                break;
         }
     }   
      catch (error) {
