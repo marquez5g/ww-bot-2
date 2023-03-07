@@ -9,9 +9,10 @@ import { PingModule } from './modules/ping'
 import { RoomModule } from './modules/dh/room'
 import { TeamsModule } from './modules/dh/teams'
 import { LectureModule } from './modules/dh/lecture'
+import { YesOrNotModule } from './modules/yesornot'
 
 // All the modules are here
-const loadedModules = [new HourModule(), new BirthModule(), new PingModule(), new RoomModule, new TeamsModule, new LectureModule]
+const loadedModules = [new HourModule(), new BirthModule(), new PingModule(), new RoomModule, new TeamsModule, new LectureModule, new YesOrNotModule()]
 
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -48,7 +49,9 @@ client.on('message', async (message: Message) => {
 
 client
   .initialize()
-  .then(() => {})
+  .then(() => {
+    console.log('Bot started')
+  })
   .catch((e) => {
     console.error('Error', e)
   })
