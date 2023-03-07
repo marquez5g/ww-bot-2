@@ -6,9 +6,10 @@ import { StopPropagation } from './module'
 import { HourModule } from './modules/hour'
 import { BirthModule } from './modules/birth'
 import { PingModule } from './modules/ping'
+import { YesOrNotModule } from './modules/yesornot'
 
 // All the modules are here
-const loadedModules = [new HourModule(), new BirthModule(), new PingModule()]
+const loadedModules = [new HourModule(), new BirthModule(), new PingModule(), new YesOrNotModule()]
 
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -45,7 +46,9 @@ client.on('message', async (message: Message) => {
 
 client
   .initialize()
-  .then(() => {})
+  .then(() => {
+    console.log('Bot started')
+  })
   .catch((e) => {
     console.error('Error', e)
   })
