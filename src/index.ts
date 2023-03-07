@@ -12,7 +12,15 @@ import { LectureModule } from './modules/dh/lecture'
 import { YesOrNotModule } from './modules/yesornot'
 
 // All the modules are here
-const loadedModules = [new HourModule(), new BirthModule(), new PingModule(), new RoomModule, new TeamsModule, new LectureModule, new YesOrNotModule()]
+const loadedModules = [
+  new HourModule(),
+  new BirthModule(),
+  new PingModule(),
+  new RoomModule(),
+  new TeamsModule(),
+  new LectureModule(),
+  new YesOrNotModule(),
+]
 
 const client = new Client({
   authStrategy: new LocalAuth(),

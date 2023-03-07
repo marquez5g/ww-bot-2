@@ -17,7 +17,7 @@ export class YesOrNotModule extends Module {
     const chosen = options[Math.floor(Math.random() * options.length)]
 
     await message.reply(`Prefiero el de ${chosen}`)
-    
+
     throw new StopPropagation()
   }
 }
