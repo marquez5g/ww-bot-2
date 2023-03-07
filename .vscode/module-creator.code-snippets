@@ -1,0 +1,28 @@
+{
+	"Create a new module": {
+		"scope": "javascript,typescript",
+		"prefix": "mmcc",
+		"body": [
+			"import { type Message } from 'whatsapp-web.js'",
+			"import { Module, StopPropagation } from '../module'",
+			"",
+			"export class ${1:Unnamed}Module extends Module {",
+			"  constructor() {",
+			"    super()",
+			"    this._command = '${2:}'",
+			"  }",
+			"",
+			"  async call(message: Message): Promise<void> {",
+			"    const [command, rest] = this.splitCommand(message.body)",
+			"    if (command !== this._command) return",
+			"",
+			"    await message.reply(`echo: \\${rest}`)",
+			"    $0",
+			"    throw new StopPropagation()",
+			"  }",
+			"}",
+			"",
+		],
+		"description": "Create a new module for this bot"
+	}
+}
