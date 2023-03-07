@@ -6,9 +6,12 @@ import { StopPropagation } from './module'
 import { HourModule } from './modules/hour'
 import { BirthModule } from './modules/birth'
 import { PingModule } from './modules/ping'
+import { RoomModule } from './modules/dh/room'
+import { TeamsModule } from './modules/dh/teams'
+import { LectureModule } from './modules/dh/lecture'
 
 // All the modules are here
-const loadedModules = [new HourModule(), new BirthModule(), new PingModule()]
+const loadedModules = [new HourModule(), new BirthModule(), new PingModule(), new RoomModule, new TeamsModule, new LectureModule]
 
 const client = new Client({
   authStrategy: new LocalAuth(),
