@@ -1,6 +1,15 @@
 import qrcode from 'qrcode-terminal'
 
-import { Client, LocalAuth } from 'whatsapp-web.js'
+import { Client, LocalAuth, type Message } from 'whatsapp-web.js'
+
+import { StopPropagation } from './module'
+import { HourModule } from './modules/hour'
+import { BirthModule } from './modules/birth'
+import { PingModule } from './modules/ping'
+
+// All the modules are here
+const loadedModules = [new HourModule(), new BirthModule(), new PingModule()]
+
 const client = new Client({
   authStrategy: new LocalAuth(),
 })
@@ -14,45 +23,23 @@ client.on('ready', () => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-client.on('message', async (message: { body: string; reply: any }) => {
-  try {
-    const cleanInput = message.body.trim().toLowerCase().split(' ')
-    const command = cleanInput[0]
-    const argument = cleanInput[1]
-    switch (command) {
-      case '#ping':
-        message.reply('pong')
+client.on('message', async (message: Message) => {
+  // Find the module that understands this message
+  for (let i = 0; i < loadedModules.length; i++) {
+    const module = loadedModules[i]
+
+    // Call the module, if the module raise StopPropagation, then we have to
+    // stop the for-loop
+    try {
+      await module.call(message)
+    } catch (e) {
+      if (e instanceof StopPropagation) {
         break
-      case '#hora':
-        {
-          const date = new Date()
-          const hour = date.getHours()
-          const minute = date.getMinutes()
-          const second = date.getSeconds()
-          const options: any = {
-            weekday: 'long',
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          }
-          const dateStr = date.toLocaleDateString('es-ES', options)
-          message.reply(`Son las ${hour}:${minute}:${second} del "${dateStr}"`)
-        }
-        break
-      case '#edad':
-        {
-          const name = argument
-          const request = await fetch(`https://api.agify.io?name=${name}`)
-          const response: any = await request.json()
-          const { age } = response
-          const replyMessage = `${name}, tu edad es: ${age as string} años`
-          message.reply(replyMessage)
-        }
-        break
+      } else {
+        await message.reply('Algo falló, intenta otro comando.')
+        throw e
+      }
     }
-  } catch (error) {
-    message.reply('Algo falló, intenta otro comando.')
-    console.log('hola')
   }
 })
 
