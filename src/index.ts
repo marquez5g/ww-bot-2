@@ -1,3 +1,8 @@
+/* eslint-disable import/first */
+import dotenv from 'dotenv'
+dotenv.config()
+
+import { ArgumentParser } from 'argparse'
 import qrcode from 'qrcode-terminal'
 
 import { Client, LocalAuth, type Message } from 'whatsapp-web.js'
@@ -11,6 +16,18 @@ import { TeamsModule } from './modules/dh/teams'
 import { LectureModule } from './modules/dh/lecture'
 import { YesOrNotModule } from './modules/yesornot'
 
+const argparser = new ArgumentParser({
+  description: 'WhatsApp Bot',
+})
+
+argparser.add_argument('--module-list', {
+  dest: 'moduleList',
+  action: 'store_true',
+  help: 'Show all the available modules',
+})
+
+const args = argparser.parse_args()
+
 // All the modules are here
 const loadedModules = [
   new HourModule(),
@@ -21,6 +38,14 @@ const loadedModules = [
   new LectureModule(),
   new YesOrNotModule(),
 ]
+
+if (args.moduleList) {
+  console.log('Module list:')
+  loadedModules.forEach((module) => {
+    console.log(module)
+  })
+  process.exit()
+}
 
 const client = new Client({
   authStrategy: new LocalAuth(),
