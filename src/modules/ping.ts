@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../module'
 
 export class PingModule extends Module {
   constructor() {
-    super()
+    super('ping')
     this._command = '#ping'
   }
 
