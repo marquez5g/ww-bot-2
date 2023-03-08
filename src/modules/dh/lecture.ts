@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../../module'
 
 export class LectureModule extends Module {
   constructor() {
-    super()
+    super('lecture')
     this._command = '#clase'
   }
 

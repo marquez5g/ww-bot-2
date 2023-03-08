@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../../module'
 
 export class TeamsModule extends Module {
   constructor() {
-    super()
+    super('team')
     this._command = '#equipos'
   }
 
