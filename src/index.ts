@@ -2,6 +2,8 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
+import debugMaker from 'debug'
+
 import { ArgumentParser } from 'argparse'
 import qrcode from 'qrcode-terminal'
 
@@ -16,6 +18,9 @@ import { TeamsModule } from './modules/dh/teams'
 import { LectureModule } from './modules/dh/lecture'
 import { YesOrNotModule } from './modules/yesornot'
 import { AboutModule } from './modules/about'
+
+const log = debugMaker('bot')
+const debug = debugMaker('debug')
 
 const argparser = new ArgumentParser({
   description: 'WhatsApp Bot',
@@ -58,6 +63,7 @@ client.on('qr', (qr: any) => {
 })
 
 client.on('ready', () => {
+  log('ready')
   console.log('Client is ready!')
 })
 
@@ -70,11 +76,14 @@ client.on('message', async (message: Message) => {
     // Call the module, if the module raise StopPropagation, then we have to
     // stop the for-loop
     try {
+      debug(`asking in ${module.name}`)
       await module.call(message)
     } catch (e) {
       if (e instanceof StopPropagation) {
+        log(`stop in ${module.name}`)
         break
       } else {
+        log(e)
         await message.reply('Algo falló, intenta otro comando.')
         throw e
       }
