@@ -12,6 +12,7 @@ export abstract class Module {
   // Define the _command property as a string and set it to an empty string
   _command: string = ''
 
+  // The module name. This will display when user asks for the module list
   name: string
 
   constructor(moduleName: string) {
