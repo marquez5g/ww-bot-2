@@ -15,6 +15,7 @@ import { RoomModule } from './modules/dh/room'
 import { TeamsModule } from './modules/dh/teams'
 import { LectureModule } from './modules/dh/lecture'
 import { YesOrNotModule } from './modules/yesornot'
+import { AboutModule } from './modules/about'
 
 const argparser = new ArgumentParser({
   description: 'WhatsApp Bot',
@@ -37,6 +38,7 @@ const loadedModules = [
   new TeamsModule(),
   new LectureModule(),
   new YesOrNotModule(),
+  new AboutModule(),
 ]
 
 if (args.moduleList) {
