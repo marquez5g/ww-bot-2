@@ -42,7 +42,7 @@ const loadedModules = [
 if (args.moduleList) {
   console.log('Module list:')
   loadedModules.forEach((module) => {
-    console.log(module)
+    console.log(`-> ${module.name}`)
   })
   process.exit()
 }
