@@ -15,7 +15,9 @@ export class AboutModule extends Module {
     const [command] = this.splitCommand(message.body)
     if (command !== this._command) return
 
-    await message.reply(`${about}`)
+    const mode = process.env.NODE_ENV === 'development' ? 'dev' : 'prod'
+
+    await message.reply(`${mode}\n\n${about}`)
 
     throw new StopPropagation()
   }

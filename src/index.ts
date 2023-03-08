@@ -1,7 +1,3 @@
-/* eslint-disable import/first */
-import dotenv from 'dotenv'
-dotenv.config()
-
 import debugMaker from 'debug'
 
 import { ArgumentParser } from 'argparse'
