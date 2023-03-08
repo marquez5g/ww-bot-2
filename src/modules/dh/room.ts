@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../../module'
 
 export class RoomModule extends Module {
   constructor() {
-    super()
+    super('room')
     this._command = '#mesa'
   }
 

@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../module'
 
 export class YesOrNotModule extends Module {
   constructor() {
-    super()
+    super('yes-or-not')
     this._command = ''
   }
 

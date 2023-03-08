@@ -7,7 +7,8 @@
     "test": "test",
     "build": "tsc",
     "lint": "eslint",
-    "start": "node build/index.js"
+    "dev": "NODE_ENV=development node build",
+    "start": "node build"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,13 @@
   "homepage": "https://github.com/marquez5g/ww-bot-2#readme",
   "dependencies": {
     "argparse": "^2.0.1",
-    "dotenv": "^16.0.3",
+    "debug": "^4.3.4",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.19.4"
   },
   "devDependencies": {
     "@types/argparse": "^2.0.10",
+    "@types/debug": "^4.1.7",
     "@types/qrcode-terminal": "^0.12.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "eslint": "^8.35.0",

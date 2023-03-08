@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../module'
 
 export class BirthModule extends Module {
   constructor() {
-    super()
+    super('birth')
     this._command = '#edad'
   }
 

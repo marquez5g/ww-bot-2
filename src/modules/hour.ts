@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../module'
 
 export class HourModule extends Module {
   constructor() {
-    super()
+    super('hour')
     this._command = '#hora'
   }
 
