@@ -3,7 +3,7 @@ import { Module, StopPropagation } from '../../module'
 
 export class TeamsModule extends Module {
   constructor() {
-    super()
+    super('team')
     this._command = '#equipos'
   }
 
@@ -12,7 +12,7 @@ export class TeamsModule extends Module {
     if (command !== this._command) return
 
     await message.reply(
-               `Equipo 1:
+      `Equipo 1:
                 Clara Liseth Escobar Sarmiento
                 Nahuel Barbosa
                 Laura Vanessa Vanegas
@@ -72,7 +72,8 @@ export class TeamsModule extends Module {
                 Esteban Jaramillo
                 Wilder de Jesus Lopez
                 Dayana
-                Ihancker Martinez Torrez`)
+                Ihancker Martinez Torrez`
+    )
 
     throw new StopPropagation()
   }

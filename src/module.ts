@@ -12,6 +12,13 @@ export abstract class Module {
   // Define the _command property as a string and set it to an empty string
   _command: string = ''
 
+  // The module name. This will display when user asks for the module list
+  name: string
+
+  constructor(moduleName: string) {
+    this.name = moduleName
+  }
+
   // Define the abstract call() method that takes a Message object as a
   // parameter and returns void or Promise<void>
   abstract call(message: Message): void | Promise<void>
