@@ -5,7 +5,9 @@ module.exports = {
     name: 'bot',
     env: {
       "NVM_DIR": "~/.nvm",
-      "PATH": "$NVM_DIR/versions/node/$(nvm current)/bin:$PATH"
+      "PATH": "$NVM_DIR/versions/node/$(nvm current)/bin:$PATH",
+      "SHELL": "/bin/bash",
+      "BASH_ENV": "~/.bashrc"
     }
   }],
   
