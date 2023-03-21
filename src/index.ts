@@ -14,6 +14,7 @@ import { TeamsModule } from './modules/dh/teams'
 import { LectureModule } from './modules/dh/lecture'
 import { YesOrNotModule } from './modules/yesornot'
 import { AboutModule } from './modules/about'
+import { HelpModule } from './modules/help'
 
 const log = debugMaker('bot')
 const debug = debugMaker('debug')
