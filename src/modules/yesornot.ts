@@ -4,7 +4,7 @@ import { Module, StopPropagation } from '../module'
 export class YesOrNotModule extends Module {
   constructor() {
     super('yes-or-not')
-    this._command = ''
+    this._command = '#decide'
   }
 
   async call(message: Message): Promise<void> {
