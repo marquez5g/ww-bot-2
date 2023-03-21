@@ -8,7 +8,8 @@ export class YesOrNotModule extends Module {
   }
 
   async call(message: Message): Promise<void> {
-    if (!message.body.toLowerCase().includes(' o ')) return
+    const [command] = this.splitCommand(message.body)
+    if (!message.body.toLowerCase().includes(' o ') || !message.body.toLowerCase().includes(' ó ') || command !== this._command) return
 
     const text = message.body
 
