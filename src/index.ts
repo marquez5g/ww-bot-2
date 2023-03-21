@@ -41,6 +41,7 @@ const loadedModules = [
   new LectureModule(),
   new YesOrNotModule(),
   new AboutModule(),
+  new HelpModule(),
 ]
 
 if (args.moduleList) {
